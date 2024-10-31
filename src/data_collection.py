@@ -10,7 +10,7 @@ def collect_data(tickers, start_date, end_date):
 if __name__ == "__main__":
     # Define parameters for data collection
     tickers = 'AAPL'  # Example ticker, can be a string or list of tickers
-    start_date = '2022-01-01'
+    start_date = '2020-01-01'
     end_date = '2022-12-31'
     
     # Collect data from Yahoo Finance

@@ -1,10 +1,12 @@
 import pandas as pd
+from db_utils import save_to_db  # Import the save_to_db function from db_utils
 import sqlite3
+
 
 def load_cleaned_data(db_name="data/database.sqlite"):
     """Load cleaned data from the database."""
     conn = sqlite3.connect(db_name)
-    query = "SELECT * FROM asset_data"  # Adjust as necessary for your cleaned data table
+    query = "SELECT * FROM asset_data" 
     df = pd.read_sql(query, conn)
     conn.close()
     return df
@@ -29,10 +31,8 @@ def create_features(data):
     return data
 
 def save_features_to_db(data, db_name="data/database.sqlite"):
-    """Save the new features back to the database."""
-    conn = sqlite3.connect(db_name)
-    data.to_sql('feature_data', conn, if_exists='replace', index=False)  # Save features in a new table
-    conn.close()
+    """Save the new features back to the database using db_utils."""
+    save_to_db(data, db_name)  
 
 if __name__ == "__main__":
     # Load cleaned data
